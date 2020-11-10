@@ -70,8 +70,8 @@ class NPM(Command):
     node_modules = os.path.join(node_root, 'node_modules')
 
     targets = [
-        os.path.join(here, 'ipyvuetify', 'static', 'extension.js'),
-        os.path.join(here, 'ipyvuetify', 'static', 'index.js')
+        os.path.join(here, 'ipyvuetify', 'nbextension', 'extension.js'),
+        os.path.join(here, 'ipyvuetify', 'nbextension', 'index.js')
     ]
 
     def initialize_options(self):
@@ -151,7 +151,11 @@ setup_args = {
     'long_description': LONG_DESCRIPTION,
     'include_package_data': True,
     'data_files': [
-        ('share/jupyter/nbextensions/jupyter-vuetify', glob.glob('ipyvuetify/static/*')),
+        ('share/jupyter/nbextensions/jupyter-vuetify', glob.glob('ipyvuetify/nbextension/*')),
+        ('share/jupyter/labextensions/jupyter-vuetify',
+         glob.glob('ipyvuetify/labextension/package.json')),
+        ('share/jupyter/labextensions/jupyter-vuetify/static',
+         glob.glob('ipyvuetify/labextension/static/*')),
         ('etc/jupyter/nbconfig/notebook.d', ['jupyter-vuetify.json'])
     ],
     'install_requires': [
